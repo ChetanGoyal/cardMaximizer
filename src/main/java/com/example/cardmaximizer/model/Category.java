@@ -1,0 +1,7 @@
+package com.example.cardmaximizer.model;
+
+public enum Category {
+    GAS_COSTCO, GAS_ESSO, DINING, GROCERY_LOBLAWS,
+    GROCERY_EMPIRE, COSTCO_WAREHOUSE, TRAVEL_EXPEDIA,
+    GAMING_DIGITAL, RECURRING_BILL, OTHER
+}
