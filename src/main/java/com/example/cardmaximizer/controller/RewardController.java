@@ -20,6 +20,9 @@ public class RewardController {
 
     @PostMapping
     public ResponseEntity<Recommendation> optimize(@RequestBody Purchase purchase) {
+        if (purchase.getAmount() <= 0) {
+            throw new RuntimeException("Purchase amount must be greater than zero.");
+        }
         return ResponseEntity.ok(service.getBestCard(purchase));
     }
 
