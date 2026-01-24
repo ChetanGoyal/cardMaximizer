@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import QuestForm from './components/QuestForm';
 import RewardDisplay from './components/RewardDisplay';
+import ServerStatus from './components/ServerStatus';
 
 function App() {
     const [reward, setReward] = useState(null);
@@ -17,6 +18,10 @@ function App() {
 
     return (
         <div className="min-h-screen bg-black text-white font-sans p-4 md:p-10">
+            <header>
+                <h1>Card Maximizer</h1>
+                <ServerStatus /> {/* This will now show the status at the top! */}
+            </header>
             <header className="max-w-2xl mx-auto text-center mb-10">
                 <h1 className="text-4xl font-black tracking-tighter text-yellow-500 uppercase italic">
                     Card Maximizer <span className="text-white">v1.0</span>
