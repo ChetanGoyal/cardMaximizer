@@ -1,30 +1,27 @@
-# Step 1: Build stage using Maven and OpenJDK 25
-# We use the official Maven image paired with OpenJDK 25
-FROM maven:3.9.6-amazoncorretto-25 AS build
+# Stage 1: Build Stage
+FROM amazoncorretto:25-al2023 AS build
 
-# Set the working directory inside the container
+# Install Maven manually since a combined image isn't available yet
+RUN yum install -y maven
+
 WORKDIR /app
 
-# Copy the pom.xml and the entire project
-COPY . .
+# Copy pom.xml and download dependencies
+COPY pom.xml .
+RUN mvn dependency:go-offline
 
-# Build the application
-# We skip tests to ensure a fast build on the Render Free Tier
+# Copy source code and build
+COPY src ./src
 RUN mvn clean package -DskipTests
 
-# Step 2: Runtime stage
-# Using the Eclipse Temurin JRE 25 image for a lightweight, secure production environment
-FROM eclipse-temurin:25-jre-noble
-
-# Set working directory for the runtime
+# Stage 2: Runtime Stage
+FROM amazoncorretto:25-alpine-jdk
 WORKDIR /app
 
-# Copy the built JAR from the build stage
-# Since you have no backend folder, the JAR is in /app/target/
+# Copy the JAR from the build stage
 COPY --from=build /app/target/*.jar app.jar
 
-# Expose the default Spring Boot port
 EXPOSE 8080
 
-# Run the application with container-aware memory settings
+# Memory-optimized settings for Render
 ENTRYPOINT ["java", "-XX:MaxRAMPercentage=75.0", "-jar", "app.jar"]
