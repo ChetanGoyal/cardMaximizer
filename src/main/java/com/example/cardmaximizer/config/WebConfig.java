@@ -15,6 +15,7 @@ public class WebConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
                         .allowedOrigins("http://localhost:3000") // React's default port
+                        .allowedOrigins("https://cardbenefit.netlify.app/")
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowedHeaders("*");
             }
