@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: card-maximizer-api # Must match your existing service name
+    runtime: docker
+    plan: free
+    envVars:
+      - key: JAVA_VERSION
+        value: 25
