@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Sword, Globe } from 'lucide-react';
 
 const QuestForm = ({ onResults }) => {
+    const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
     const [purchase, setPurchase] = useState({ amount: '', category: 'DINING', isInternational: false });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:8080/api/v1/optimize', {
+        const response = await fetch(`${API_BASE_URL}/api/v1/optimize`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(purchase),
