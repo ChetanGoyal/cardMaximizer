@@ -8,7 +8,9 @@ public class CIBCCostcoStrategy implements RewardStrategy {
     public double calculateReward(Purchase purchase) {
         if (purchase.getCategory() == Category.GAS_COSTCO) return 0.03;
         if (purchase.getCategory() == Category.DINING) return 0.03;
+        if(purchase.getCategory() == Category.GAS) return 0.02;
         if (purchase.getCategory() == Category.COSTCO_WAREHOUSE) return 0.01;
+        if(purchase.getCategory() == Category.ONLINE_COSTCO) return 0.02;
         if (purchase.isInternational()) {
             return 0.0;
         }

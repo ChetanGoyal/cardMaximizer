@@ -32,12 +32,18 @@ const QuestForm = ({ onResults }) => {
                 <option value="GAS_COSTCO">Costco Gas</option>
                 <option value="GAMING_DIGITAL">Digital Gaming</option>
                 <option value="GAS_ESSO">Esso Gas</option>
-                <option value="GROCERY_LOBLAWS">Grocery by Loblaws</option>
-                <option value="GROCERY_EMPIRE">Grocery</option>
+                <option value="GAS">Other Gas and EV charging</option>
+                <option value="GROCERY_LOBLAWS">Grocery(Loblaws / No Frills / Zehrs)</option>
+                <option value="GROCERY_EMPIRE">Grocery(Sobeys, Safeway, FreshCo, etc.)</option>
+                <option value="PUBLIC_TRANSIT">Public Transit</option>
                 <option value="COSTCO_WAREHOUSE">Costco Warehouse</option>
+                <option value="ONLINE_COSTCO">Costco Online</option>
                 <option value="TRAVEL_EXPEDIA">Travel Expedia</option>
+                <option value="GROCERY">Grocery</option>
                 <option value="RECURRING_BILL">Recurring Bill</option>
                 <option value="OTHER">Other Expenditure</option>
+                <option value="ENTERTAINMENT">Entertainment</option>
+                <option value="SHOPPERS_DRUG_MART">Shoppers Drug Mart</option>
             </select>
 
             <div className="mb-8 p-4 rounded-md border border-blue-900/50 bg-blue-950/20 flex items-center justify-between group cursor-pointer"

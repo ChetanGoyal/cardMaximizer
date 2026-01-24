@@ -11,15 +11,18 @@ public class TDFirstClassStrategy implements RewardStrategy {
 
         // Grocery/Dining/Recurring: 6 points per $1 (approx 3% value)
         if (purchase.getCategory() == Category.DINING ||
-                purchase.getCategory() == Category.RECURRING_BILL) return 0.03;
+        purchase.getCategory() == Category.GROCERY) return 0.03;
 
         // Digital Media/Gaming often codes as Recurring or 4x points
-        if (purchase.getCategory() == Category.GAMING_DIGITAL) return 0.02;
+        if (purchase.getCategory() == Category.GAMING_DIGITAL
+                || purchase.getCategory() == Category.RECURRING_BILL) return 0.02;
+        if(purchase.getCategory() == Category.PUBLIC_TRANSIT){
+            return 0.03;
+        }
 
         if (purchase.isInternational()) {
             return 0.0; // This represents the 2.5% saved on FX fees
         }
-
         return 0.01; // Base 2 points per $1 (1% value)
     }
     @Override

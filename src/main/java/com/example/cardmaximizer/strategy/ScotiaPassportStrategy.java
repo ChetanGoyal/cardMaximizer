@@ -8,6 +8,9 @@ public class ScotiaPassportStrategy implements RewardStrategy {
     public double calculateReward(Purchase purchase) {
         if (purchase.isInternational()) return 0.025; // FX Savings
         if (purchase.getCategory() == Category.GROCERY_EMPIRE) return 0.03;
+        if (purchase.getCategory() == Category.DINING) return 0.02;
+        if (purchase.getCategory() == Category.PUBLIC_TRANSIT) return 0.02;
+        if (purchase.getCategory() == Category.ENTERTAINMENT) return 0.02;
         return 0.01;
     }
     @Override

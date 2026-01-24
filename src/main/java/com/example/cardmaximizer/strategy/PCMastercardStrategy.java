@@ -10,6 +10,8 @@ public class PCMastercardStrategy implements RewardStrategy {
         // High return at Loblaws-owned stores
         if (purchase.getCategory() == Category.GROCERY_LOBLAWS) return 0.03;
 
+        if(purchase.getCategory() == Category.SHOPPERS_DRUG_MART)return 0.045;
+
         // Esso/Mobil: Usually 30 pts per litre, roughly 3% value
         if (purchase.getCategory() == Category.GAS_ESSO) return 0.03;
 
