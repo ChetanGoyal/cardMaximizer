@@ -5,11 +5,15 @@ public class Recommendation {
     private double rewardValue;
     private String reason;
     private String rank;
+    private double approxReturn;
+    private int priority;
 
-    public Recommendation(String cardName, double rewardValue,String reason) {
+    public Recommendation(String cardName, double rewardValue,double amount,String reason,int priority) {
         this.cardName = cardName;
         this.rewardValue = rewardValue;
         this.rank = determineRank(rewardValue);
+        this.priority = priority;
+        this.approxReturn = amount * rewardValue;
     }
 
     public String getCardName() { return cardName; }
@@ -34,6 +38,22 @@ public class Recommendation {
         this.rank = determineRank(rewardValue); // Update rank if value changes
     }
     public void setReason(String reason) { this.reason = reason; }
+
+    public double getApproxReturn() {
+        return approxReturn;
+    }
+
+    public void setApproxReturn(double approxReturn) {
+        this.approxReturn = approxReturn;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
 
     @Override
     public String toString() {

@@ -24,8 +24,10 @@ public class RewardOptimizerService {
     public Recommendation getBestCard(Purchase purchase) {
         logger.info("Finding best card for: {}", purchase.getCategory());
         return wallet.stream()
-                .map(s -> new Recommendation(s.getCardName(), s.calculateReward(purchase), s.getReason(purchase)))
-                .max(Comparator.comparingDouble(Recommendation::getRewardValue))
+                .map(s -> new Recommendation(s.getCardName(), s.calculateReward(purchase)
+                        ,purchase.getAmount(), s.getReason(purchase),s.getPriority()))
+                .max(Comparator.comparingDouble(Recommendation::getRewardValue)
+                        .thenComparingInt(Recommendation::getPriority))
                 .orElseThrow(() -> new RuntimeException("No strategies found"));
     }
 }

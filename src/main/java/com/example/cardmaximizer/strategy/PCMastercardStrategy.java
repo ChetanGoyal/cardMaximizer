@@ -13,6 +13,10 @@ public class PCMastercardStrategy implements RewardStrategy {
         // Esso/Mobil: Usually 30 pts per litre, roughly 3% value
         if (purchase.getCategory() == Category.GAS_ESSO) return 0.03;
 
+        if (purchase.isInternational()) {
+            return 0.0; // This represents the 2.5% saved on FX fees
+        }
+
         return 0.01; // Base 10 pts per $1 (1% value)
     }
 

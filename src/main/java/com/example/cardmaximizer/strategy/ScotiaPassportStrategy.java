@@ -16,4 +16,7 @@ public class ScotiaPassportStrategy implements RewardStrategy {
     public String getReason(Purchase purchase) {
         return purchase.isInternational() ? "No FX Fees (2.5% saved)" : "3x Scene+ Points";
     }
+
+    @Override
+    public int getPriority() { return 5; }
 }

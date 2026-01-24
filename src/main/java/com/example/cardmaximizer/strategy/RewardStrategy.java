@@ -5,4 +5,7 @@ public interface RewardStrategy {
     double calculateReward(Purchase purchase);
     String getCardName();
     String getReason(Purchase purchase);
+    default int getPriority() {
+        return 1;
+    }
 }

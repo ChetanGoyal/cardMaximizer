@@ -16,6 +16,10 @@ public class TDFirstClassStrategy implements RewardStrategy {
         // Digital Media/Gaming often codes as Recurring or 4x points
         if (purchase.getCategory() == Category.GAMING_DIGITAL) return 0.02;
 
+        if (purchase.isInternational()) {
+            return 0.0; // This represents the 2.5% saved on FX fees
+        }
+
         return 0.01; // Base 2 points per $1 (1% value)
     }
     @Override
